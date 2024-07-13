@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário para Contato</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulário para contato</h2>
+        <form id="return-form" action="/submit-return" method="post">
+            <div class="form-group">
+                <label for="order-number">Nome completo:</label>
+                <input type="text" id="order-number" name="order-number" required>
+            </div>
+            <div class="form-group">
+                <label for="name">E-mail:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="pais">País:</label>
+                <input type="Pais" id="pais" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="product-name">Assunto:</label>
+                <input type="text" id="product-name" name="product-name" required>
+            </div>
+            <div class="form_group">
+                <label for="product-name">Método preferido de contato:</label>
+                <select class="select">
+                    <option value="">Escolha</option>
+                    <option value="1">Ligação</option>
+                    <option value="2">WhatsApp</option>
+                    <option value="3">E-mail</option>
+                </select>
+            </div><br>
+            <div class="form_group">
+                <label for="product-name">Melhor Horario para contato:</label>
+                <select class="select">
+                    <option value="">Escolha</option>
+                    <option value="4">Manhã</option>
+                    <option value="5">Tarde</option>
+                    <option value="6">Noite</option>
+                </select>
+            </div><br>
+            
+            <div class="form-group">
+                <button type="submit"><p>Enviar</p></button>
+            </div>
+            <div class="form-group">
+                <a href="index2.html">
+                    <button type="button"><p>Proximo</p></button>
+                </a>
+            </div>
+        </form>
+        
+    </div>
+
+    <div class="notification" id="notification">
+        <span id="notification-text" ><h3>Seu formulário foi enviado com sucesso!</h3></span>
+        <div class="notification-progress" id="notification-progress"></div>
+    </div>
+
+    <script>
+        document.getElementById('return-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio do formulário
+            
+            var notification = document.getElementById('notification');
+            var notificationText = document.getElementById('notification-text');
+            var notificationProgress = document.getElementById('notification-progress');
+
+            // Exibe a notificação
+            notification.classList.add('success');
+            notification.style.display = 'block';
+            
+            // Anima a barra de progresso da notificação
+            var width = 0;
+            var interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(function() {
+                        notification.style.display = 'none';
+                    }, 500);
+                } else {
+                    width += 10;
+                    notificationProgress.style.width = width + '%';
+                }
+            }, 100);
+
+            // Reinicia a barra de progresso
+            setTimeout(function() {
+                width = 0;
+                notificationProgress.style.width = width + '%';
+            }, 6000); // Tempo total da notificação (exibição + tempo de espera)
+        });
+
+            
+    </script>
+    
+    
+</body>
+</html>
+

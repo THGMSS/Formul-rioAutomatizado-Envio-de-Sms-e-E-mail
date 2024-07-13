@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Encomenda de Produto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulário de Encomenda de Produto</h2>
+        <form id="return-form" action="/submit-return" method="post">
+            <div class="form-group">
+                <label for="order-number">Nome do Cliente:</label>
+                <input type="text" id="nome_cliente" name="order-number" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail do Cliente:</label>
+                <input type="email" id="email" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone para contato:</label>
+                <input type="text" id="telefone" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="e">Endereço da Entrega:</label>
+                <input type="text" id="endereco" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="cep">CEP:</label>
+                <input type="etxt" id="cep" name="email" required>
+            </div>
+            <div class="form_group">
+                <label for="produto">Produto:</label>
+                <select class="select">
+                    <option value="">Escolha</option>
+                    <option value="">PlayStation 1</option>
+                    <option value="">PlayStation 2</option>
+                    <option value="">PlayStation 3</option>
+                    <option value="">PlayStation 4</option>
+                    <option value="">Xbox</option>
+                    <option value="">Xbox 360</option>
+                    <option value="">Xbox One</option>
+                    <option value="">Xbox Series X</option>
+                    <option value="">Xbox Series S</option>
+                    <option value="">Notebook Gamer</option>
+                    <option value="">Iphone X</option>
+                    <option value="">Iphone 11</option>
+                    <option value="">Iphone 11 Pro</option>
+                    <option value="">Iphone 11 Pro Max</option>
+                    <option value="">Iphone 12</option>
+                    <option value="">Iphone 12 Pro</option>
+                    <option value="">Iphone 12 Pro Max</option>
+                    <option value="">Iphone 13</option>
+                    <option value="">Iphone 13 Pro</option>
+                    <option value="">Iphone 13 Pro Max</option>
+                    <option value="">Iphone 14</option>
+                    <option value="">Iphone 14 Pro</option>
+                    <option value="">Iphone 14 Pro Max</option>
+                    <option value="">Iphone 15</option>
+                    <option value="">Iphone 15 Pro</option>
+                    <option value="">Iphone 15 Pro Max</option>
+                </select>
+            </div><br>
+            <div class="form_group">
+                <label for="product-name">Quantidade:</label>
+                <select name="quantidade" class="select">
+                    <option value="">Escolha</option>
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                    <option value="">5</option>
+                    <option value="">6</option>
+                    <option value="">7</option>
+                    <option value="">8</option>
+                    <option value="">9</option>
+                    <option value="">10</option>
+                </select>
+            
+                </div><br>   
+                <div class="form_group">
+                    <label for="">Forma de Pagamento:</label>
+                    <select name="forma_pagamento" class="select">
+                        <option value="">Escolha</option>
+                        <option value="">Pix</option>
+                        <option value="">Cartão de Débito</option>
+                        <option value="">Cartão de Crédito</option>
+                        <option value="">Boleto</option>
+                    </select>
+                </div><br>
+          
+            <div class="form-group">
+                <a href="index2.html">
+                <button type="button"><p>Anterior</p></button>
+                </a>
+            </div>
+            <div class="form-group">
+                <button type="submit"><p>Enviar</p></button>
+            </div>
+            <div class="form-group">
+                <a href="index4.html">
+                <button type="button"><p>Proximo</p></button>
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <div class="notification" id="notification">
+        <span id="notification-text" ><h3>Seu formulário foi enviado com sucesso!</h3></span>
+        <div class="notification-progress" id="notification-progress"></div>
+    </div>
+    
+    <script>
+        document.getElementById('return-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio do formulário
+            
+            var notification = document.getElementById('notification');
+            var notificationText = document.getElementById('notification-text');
+            var notificationProgress = document.getElementById('notification-progress');
+
+            // Exibe a notificação
+            notification.classList.add('success');
+            notification.style.display = 'block';
+            
+            // Anima a barra de progresso da notificação
+            var width = 0;
+            var interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(function() {
+                        notification.style.display = 'none';
+                    }, 500);
+                } else {
+                    width += 10;
+                    notificationProgress.style.width = width + '%';
+                }
+            }, 100);
+
+            // Reinicia a barra de progresso
+            setTimeout(function() {
+                width = 0;
+                notificationProgress.style.width = width + '%';
+            }, 6000); // Tempo total da notificação (exibição + tempo de espera)
+        });
+
+            
+    </script>
+    
+</body>
+</html>
+

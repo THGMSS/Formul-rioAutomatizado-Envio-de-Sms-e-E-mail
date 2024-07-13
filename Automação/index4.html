@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Solicitação de Emprego</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulário de Solicitação de Emprego</h2>
+        <form id="return-form" action="/submit-return" method="post">
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome_cliente" name="order-number" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="cargo">Cargo desejado:</label>
+                <input type="text" id="cargo" name="cargo" required>
+            </div>
+            <div class="form-group">
+                <label for="curriculo">Upload do currículo:</label>
+                <input type="file" id="curriculo" required>
+            </div>
+            <div class="form-group">
+                <label for="rede_social">Linkedin ou Perfil profissional (URL):</label>
+                <input type="url" id="linkedin" accept="application/pdf" required>
+            </div>
+            <div class="form_group">
+                <label for="product-name">Disponibilidade para inicio imediato?</label>
+                    <select class="select">
+                        <option value="">Escolha</option>
+                        <option value="">Sim</option>
+                        <option value="">Não</option>
+                    </select>
+            </div><br>
+            <div class="form-group">
+                <label for="salario_pretensao">Pretensão salarial?</label>
+                <input type="text" id="salario" required>
+            </div>
+            <div class="form_group">
+                <label for="salario_pretensao">Turno de preferença:</label>
+                <select name="resolution" class="select">
+                    <option value="">Escolha</option>
+                    <option value="">Manhã</option>
+                    <option value="">Tarde</option>
+                    <option value="">Noite</option>
+                    <option value="">Sem preferência</option>
+                </select>
+            </div><br>
+            <div class="form-group">
+                <a href="index3.html">
+                <button type="button"><p>Anterior</p></button>
+                </a>
+            </div>
+            <div class="form-group">
+                <button type="submit"><p>Enviar</p></button>
+            </div>
+            <div class="form-group">
+                <a href="index5.html">
+                <button type="button"><p>Proximo</p></button>
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <div class="notification" id="notification">
+        <span id="notification-text" ><h3>Seu formulário foi enviado com sucesso!</h3></span>
+        <div class="notification-progress" id="notification-progress"></div>
+    </div>
+    
+    <script>
+        document.getElementById('return-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio do formulário
+            
+            var notification = document.getElementById('notification');
+            var notificationText = document.getElementById('notification-text');
+            var notificationProgress = document.getElementById('notification-progress');
+
+            // Exibe a notificação
+            notification.classList.add('success');
+            notification.style.display = 'block';
+            
+            // Anima a barra de progresso da notificação
+            var width = 0;
+            var interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(function() {
+                        notification.style.display = 'none';
+                    }, 500);
+                } else {
+                    width += 10;
+                    notificationProgress.style.width = width + '%';
+                }
+            }, 100);
+
+            // Reinicia a barra de progresso
+            setTimeout(function() {
+                width = 0;
+                notificationProgress.style.width = width + '%';
+            }, 6000); // Tempo total da notificação (exibição + tempo de espera)
+        });
+
+            
+    </script>
+    
+</body>
+</html>
+

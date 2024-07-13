@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Agendamento de Consulta Médica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulário de Agendamento de Consulta Médica</h2>
+        <form id="return-form" action="/submit-return" method="post">
+            <div class="form-group">
+                <label for="nome_paciente">Nome do paciente:</label>
+                <input type="text" id="nome_cliente" name="order-number" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="email" required>
+            </div>
+            <div class="form_group">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" class="select" name="date" required>
+            </div><br>
+            <div class="form-group">
+                <label for="documento">Documento do paciente: (RG/CPF)</label>
+                <input type="text" id="documento" required>
+            </div>
+            <div class="form_group">
+                <label for="rede_social">Tipo de consulta:</label>
+                <select name="" class="select">
+                    <option value="">Escolha</option>
+                    <option value="">Clinico</option>
+                    <option value="">Psicólogo</option>
+                    <option value="">Ginecologista</option>
+                    <option value="">Ortopedista</option>
+                    <option value="">Pediatra</option>
+                    <option value="">Radiologista</option>
+                    <option value="">Neurologista</option>
+                    <option value="">Gastro</option>
+                    <option value="">Oncologista</option>
+                    <option value="">Ofotamologista</option>
+                </select>
+            </div><br>
+            <div class="form_group">
+                <label for="product-name">Data e Hora:</label>
+                <input type="date" class="select" required>
+              
+                    <select name="" class="select1">
+                        <option value="">Horarios disponíveis</option>
+                        <option value="">10:00</option>
+                        <option value="">10:30</option>
+                        <option value="">11:00</option>
+                        <option value="">11:30</option>
+                        <option value="">12:00</option>
+                        <option value="">14:00</option>
+                        <option value="">14:30</option>
+                        <option value="">15:00</option>
+                        <option value="">15:30</option>
+                        <option value="">16:00</option>
+                        <option value="">16:30</option>
+                        <option value="">18:00</option>
+                        <option value="">18:30</option>
+                        <option value="">19:00</option>
+                        <option value="">19:30</option>
+                        <option value="">21:00</option>
+                        <option value="">21:30</option>
+                    </select>
+             
+            </div><br>
+            <div class="form_group">
+                <label for="salario_pretensao">Tem plano de saúde?</label>
+                <select name="" class="select">
+                    <option value="">Escolha</option>
+                    <option value="">Sim</option>
+                    <option value="">Não</option>
+                </select>
+            </div><br>
+            <div class="form-group">
+                <label for="salario_pretensao">Digite em poucas palavras o que sente:</label>
+                <textarea name="" id="text_area"></textarea>
+            </div>
+
+            <div class="form-group">
+                <a href="index4.html">
+                <button type="button"><p>Anterior</p></button>
+                </a>
+            </div>
+            <div class="form-group">
+                <button type="submit"><p>Marcar Consulta</p></button>
+            </div>
+            <div class="form-group">
+                <a href="index6.html">
+                <button type="button"><p>Proximo</p></button>
+                </a>
+            </div>
+
+            <h3 class="index5">Lembrando que o pagamento é efetuado no dia da consulta</h3>
+            <h5 class="index5">Caso você não tenha plano de saúde</h5>
+        </form>
+    </div>
+
+    <div class="notification" id="notification">
+        <span id="notification-text" ><h3>Sua consulta foi marcada com sucesso</h3></span>
+        <div class="notification-progress" id="notification-progress"></div>
+    </div>
+    
+    <script>
+        document.getElementById('return-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio do formulário
+            
+            var notification = document.getElementById('notification');
+            var notificationText = document.getElementById('notification-text');
+            var notificationProgress = document.getElementById('notification-progress');
+
+            // Exibe a notificação
+            notification.classList.add('success');
+            notification.style.display = 'block';
+            
+            // Anima a barra de progresso da notificação
+            var width = 0;
+            var interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(function() {
+                        notification.style.display = 'none';
+                    }, 500);
+                } else {
+                    width += 10;
+                    notificationProgress.style.width = width + '%';
+                }
+            }, 100);
+
+            // Reinicia a barra de progresso
+            setTimeout(function() {
+                width = 0;
+                notificationProgress.style.width = width + '%';
+            }, 6000); // Tempo total da notificação (exibição + tempo de espera)
+        });
+
+            
+    </script>
+    
+</body>
+</html>
+

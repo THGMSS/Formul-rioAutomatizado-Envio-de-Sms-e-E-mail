@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Solicitação de Doação</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulário de Solicitação de Doação</h2>
+        <form id="return-form" action="/submit-return" method="post">
+            <div class="form-group">
+                <label for="nome_paciente">Nome Completo:</label>
+                <input type="text" id="nome" name="order-number" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="email" required>
+            </div>
+            <div class="form_group">
+                <label for="data_nascimento">O que deseja doar?</label>
+                <select name="" class="select">
+                    <option value="">Escolha</option>
+                    <option value="">Roupas em bom estado</option>
+                    <option value="">Roupas de bebê e infantis</option>
+                    <option value="">Sapatos e Botas</option>
+                    <option value="">Alimentos nãp perecíveis</option>
+                    <option value="">Fórmula infantil e alimentos para bebês</option>
+                    <option value="">Talheres, Pratos e Copos</option>
+                    <option value="">Panelas e Frigideiras</option>
+                    <option value="">Pequenos eletrodomésticos</option>
+                    <option value="">Cadeiras e Mesas</option>
+                    <option value="">Sofás e Poltronas</option>
+                    <option value="">Estantes e Prateleiras</option>
+                    <option value="">Computadores e Laptops</option>
+                    <option value="">Celulares</option>
+                    <option value="">Tablets</option>
+                    <option value="">Brinquedos em bom estado</option>
+                    <option value="">Carrinho de bebê e infantis</option>
+                    <option value="">Livros e jogos educativos</option>
+                    <option value="">Sabonetes e xampus</option>
+                    <option value="">Pasta Dental e escovas de dente (Novas por favor)</option>
+                    <option value="">Fraldas descartáveis e Absorventes</option>
+                    <option value="">Bicicletas e Acessórios</option>
+                    <option value="">Biblia Sagrada</option>
+                    <option value="">Outros</option>
+                </select>
+            </div><br>
+            <div class="form_group">
+                <label for="documento">Deseja doar dinheiro?</label>
+                <select name="" class="select">
+                    <option value="">Escolha</option>
+                    <option value="">Sim</option>
+                    <option value="">Não</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="product-name">Se sim (Digite o valor), Se não (Digite 0):</label>
+                <input type="text" id="valor_doação" required >
+             </div>
+             <div class="form_group">
+                <label for="product-name">Se caso for doar, selecione o método de pagamento:</label>
+                <select name="" class="select">
+                    <option value="">Nenhum</option>
+                    <option value="">Pix</option>
+                    <option value="">Cartão de Débito</option>
+                    <option value="">Cartão de Crédito</option>
+                    <option value="">Dinheiro</option>
+                </select>
+             </div><br> 
+            <div class="form-group">
+                <a href="index6.html">
+                <button type="button"><p>Anterior</p></button>
+                </a>
+            </div>
+            <div class="form-group">
+                <button type="submit"><p>Enviar</p></button>
+            </div>
+            <div class="form-group">
+                <a href="index8.html">
+                <button type="button"><p>Proximo</p></button>
+                </a>
+            </div>
+
+            
+        </form>
+    </div>
+
+    <div class="notification" id="notification">
+        <span id="notification-text" ><h3>Seu orçamento foi enviado com sucesso</h3></span>
+        <div class="notification-progress" id="notification-progress"></div>
+    </div>
+    
+    <script>
+        document.getElementById('return-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio do formulário
+            
+            var notification = document.getElementById('notification');
+            var notificationText = document.getElementById('notification-text');
+            var notificationProgress = document.getElementById('notification-progress');
+
+            // Exibe a notificação
+            notification.classList.add('success');
+            notification.style.display = 'block';
+            
+            // Anima a barra de progresso da notificação
+            var width = 0;
+            var interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(function() {
+                        notification.style.display = 'none';
+                    }, 500);
+                } else {
+                    width += 10;
+                    notificationProgress.style.width = width + '%';
+                }
+            }, 100);
+
+            // Reinicia a barra de progresso
+            setTimeout(function() {
+                width = 0;
+                notificationProgress.style.width = width + '%';
+            }, 6000); // Tempo total da notificação (exibição + tempo de espera)
+        });
+
+            
+    </script>
+    
+</body>
+</html>
+
