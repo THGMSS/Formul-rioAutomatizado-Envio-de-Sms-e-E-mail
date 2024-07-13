@@ -10,7 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 
-def tempo(duration = 0):
+def tempo(duration = 1):
         time.sleep(duration)      
 
 def teste(duration = 1.5):
@@ -273,26 +273,26 @@ tempo()
 # O send_keys, serve para você digitar algo no elemento
 
 driver.find_element('xpath', '//*[@id="nome"]').send_keys('Angelina Dias')
-teste()
+tempo()
 driver.find_element('xpath', '//*[@id="email"]').send_keys('angelinadias876@gmail.com')
-teste()
+tempo()
 driver.find_element('xpath', '//*[@id="telefone"]').send_keys('11 94523-1414')
-teste()
+tempo()
 date_field = driver.find_element(By.XPATH, '//*[@id="return-form"]/div[4]/input')
 date_field.send_keys('22-10-2024')
-teste()
+tempo()
 date_field = driver.find_element(By.XPATH, '//*[@id="return-form"]/div[5]/input')
 date_field.send_keys('28-10-2024')
-teste()
+tempo()
 # Select é uma classe do selenium , usada para interagir com menus suspensos <select> e <option>
 # O select_by_visible_text está selecionando a opção pelo valor
 select_element = driver.find_element(By.XPATH, '//*[@id="return-form"]/div[6]/select')
 select = Select(select_element)
 select.select_by_visible_text('Quarto Executivo')
-teste()
+tempo()
 select_element = driver.find_element(By.XPATH, '//*[@id="return-form"]/div[7]/select')
 select = Select(select_element)
 select.select_by_visible_text('2')
-teste()
+tempo()
 driver.find_element('xpath', '//*[@id="return-form"]/div[9]/button').click()
-teste()
+tempo()
